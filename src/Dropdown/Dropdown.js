@@ -34,21 +34,15 @@ export const Dropdown = () => {
   ];
 
   const handleCountry = (id) =>{
-    const cp = Capital.filter(x => x.countryId == id)
+    const cp = Capital.filter(x => x.countryId === parseInt(id))
     setCapital(cp);
   }
 
-  const handleVisible = () =>{
-    setVisisble(true);
-  }
 
-  const handleLeave =() =>{
-    setVisisble(false);
-  }
 
 const [country , setCountry] = useState([]);
 const [capital,setCapital] = useState([]);
-const[visible, setVisisble] = useState(false);
+
 
 
 useEffect (() => {
@@ -56,7 +50,7 @@ useEffect (() => {
 },[])
   return (
     <div className='Body'>
-      <select onChange={(e) => handleCountry(e.target.value)} onMouseEnter={handleVisible} onMouseLeave={handleLeave}>
+      <select onChange={(e) => handleCountry(e.target.value)} >
         <option value = "0" hidden>Select Countries</option>
         {
           country && country !== undefined ? country.map((ctr, index) =>{
